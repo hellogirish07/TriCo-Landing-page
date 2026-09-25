@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TriCo — A focused browser code editor</title>
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="styles.css">
+
+    <!-- AOS (Animate On Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+
+    <!-- Tailwind Config for Apple Aesthetics -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                    },
+                    colors: {
+                        appleDark: '#272822',
+                        appleCard: '#0d0d0f',
+                        appleBorder: '#1f1f23',
+                        appleGray: '#86868b',
+                        appleLightGray: '#f5f5f7',
+                        accentBlue: '#2997ff',
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+
+<body class="selection:bg-accentBlue selection:text-white">
+
+    <!-- Minimalist Navigation Bar -->
+    <header class="fixed top-0 left-0 w-full z-50 apple-nav border-b border-white/10 transition-all duration-300">
+        <div class="max-w-6xl mx-auto px-6 h-14 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="text-xl font-bold tracking-tight text-white font-sans">
+                    TriCo
+                </span>
+            </a>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 text-xs font-medium text-appleGray">
+                <a href="#about" class="hover:text-white transition-colors">Overview</a>
+                <a href="#features" class="hover:text-white transition-colors">Capabilities</a>
+                <a href="#screenshots" class="hover:text-white transition-colors">Interface</a>
+            </nav>
+
+            <!-- Main CTA Link Button -->
+            <div class="flex items-center gap-4">
+                <a href="https://girish18-trico.netlify.app/" target="_blank" rel="noopener noreferrer" id="navCtaBtn" class="px-4 py-1.5 rounded-full bg-white text-black hover:bg-appleLightGray text-xs font-semibold transition-all transform active:scale-95 shadow-sm flex items-center gap-1.5">
+                    <span>Launch TriCo</span>
+                    <i class="fa-solid fa-arrow-up-right-from-square text-[10px] opacity-70"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-36 pb-20 md:pt-48 md:pb-32 overflow-hidden text-center">
+        <div class="max-w-4xl mx-auto px-6 space-y-8" data-aos="fade-up" data-aos-delay="100">
+            
+            <!-- Tagline Badge -->
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-appleCard border border-appleBorder text-xs text-appleGray font-medium">
+                <span class="w-1.5 h-1.5 rounded-full bg-accentBlue animate-pulse"></span>
+                <span>A focused browser workspace for the web</span>
+            </div>
+
+            <!-- Apple-Style Headline -->
+            <h1 class="text-5xl sm:text-7xl lg:text-8xl font-extrabold tracking-tight leading-[1.05] text-white">
+                Write, preview, <br>
+                <span class="text-gradient">and keep moving.</span>
+            </h1>
+
+            <!-- Subheading -->
+            <p class="text-lg sm:text-2xl text-appleGray font-normal leading-relaxed max-w-2xl mx-auto font-sans">
+                TriCo brings HTML, CSS, and JavaScript into one calm workspace with project folders, CodeMirror editing, live preview, and browser-native saving.
+            </p>
+
+            <!-- Hero Action CTA -->
+            <div class="pt-4 flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a href="https://girish18-trico.netlify.app/" target="_blank" rel="noopener noreferrer" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-accentBlue hover:bg-blue-500 text-white font-semibold text-sm transition-all transform active:scale-95 shadow-lg shadow-accentBlue/20 flex items-center justify-center gap-2">
+                    <span>Start Coding in TriCo</span>
+                    <i class="fa-solid fa-chevron-right text-xs"></i>
+                </a>
+                <a href="#about" class="w-full sm:w-auto px-8 py-3.5 rounded-full bg-appleCard hover:bg-appleBorder text-appleLightGray font-medium text-sm transition-all border border-appleBorder flex items-center justify-center">
+                    Learn More
+                </a>
+            </div>
+
+            <!-- Hero Feature Bullets -->
+            <div class="pt-12 flex flex-wrap items-center justify-center gap-8 text-xs text-appleGray font-medium">
+                <span class="flex items-center gap-2"><i class="fa-solid fa-folder-open text-accentBlue"></i> Open project folders</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-bolt text-cyan-400"></i> Live browser preview</span>
+                <span class="flex items-center gap-2"><i class="fa-solid fa-floppy-disk text-emerald-400"></i> Save back to disk</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- Screenshots Carousel Section -->
+    <section id="screenshots" class="py-20 relative bg-black border-t border-appleBorder">
+        <div class="max-w-6xl mx-auto px-6" data-aos="fade-up" data-aos-delay="100">
+            
+            <div class="text-center max-w-2xl mx-auto mb-12 space-y-3">
+                <h2 class="text-xs uppercase tracking-widest font-semibold text-accentBlue">Interface Showcase</h2>
+                <p class="text-3xl sm:text-5xl font-bold text-white tracking-tight">Designed for total focus.</p>
+            </div>
+
+            <!-- Carousel Frame -->
+            <div class="relative max-w-5xl mx-auto">
+                <!-- Browser Shell Container -->
+                <div class="rounded-2xl apple-card border border-appleBorder overflow-hidden shadow-2xl relative bg-appleDark">
+                    
+                    <!-- Top Window Toolbar Header -->
+                    <div class="px-4 py-3 bg-[#0a0a0c] border-b border-appleBorder flex items-center justify-between">
+                        <div class="flex items-center gap-2">
+                            <span class="w-3 h-3 rounded-full bg-[#ff5f56] inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-[#ffbd2e] inline-block"></span>
+                            <span class="w-3 h-3 rounded-full bg-[#27c93f] inline-block"></span>
+                        </div>
+                        <div id="carouselCaption" class="text-xs font-mono text-appleGray">
+                            TriCo Workspace — Explorer and editor
+                        </div>
+                        <div class="w-12"></div> <!-- Spacer -->
+                    </div>
+
+                    <!-- Slide Items Wrapper -->
+                    <div class="relative min-h-[300px] sm:min-h-[500px] grid items-center justify-center overflow-hidden bg-black">
+                        
+                        <!-- SLIDE 1 -->
+                        <div class="carousel-slide is-active w-full">
+                            <img src="./img/TriCo Workspace.png" 
+                                 alt="TriCo Explorer and CodeMirror editor preview" 
+                                 class="w-full h-auto object-cover border-0">
+                        </div>
+
+                        <!-- SLIDE 2 -->
+                        <div class="carousel-slide w-full">
+                               <img src="./img/TriCo Live preview.png" 
+                                   alt="TriCo live preview" 
+                                 class="w-full h-auto object-cover border-0">
+                        </div>
+
+                        <!-- SLIDE 3 -->
+                        <div class="carousel-slide w-full">
+                               <img src="./img/TriCo Settings.png" 
+                                   alt="TriCo themes and settings" 
+                                 class="w-full h-auto object-cover border-0">
+                        </div>
+
+                        <!-- SLIDE 4 -->
+                        <div class="carousel-slide w-full">
+                               <img src="./img/TriCo Folder Workflow.png" 
+                                   alt="TriCo folder save workflow" 
+                                 class="w-full h-auto object-cover border-0">
+                        </div>
+
+                    </div>
+                </div>
+
+                <!-- Carousel Controls Bar -->
+                <div class="flex items-center justify-between mt-6">
+                    <button onclick="prevSlide()" class="p-3 rounded-full bg-appleCard border border-appleBorder hover:bg-appleBorder text-appleGray hover:text-white transition-all active:scale-95">
+                        <i class="fa-solid fa-chevron-left text-sm"></i>
+                    </button>
+
+                    <!-- Indicators -->
+                    <div class="flex items-center gap-2">
+                        <button onclick="setSlide(0)" class="dot-btn w-6 h-1.5 rounded-full bg-white transition-all"></button>
+                        <button onclick="setSlide(1)" class="dot-btn w-2 h-1.5 rounded-full bg-appleBorder hover:bg-appleGray transition-all"></button>
+                        <button onclick="setSlide(2)" class="dot-btn w-2 h-1.5 rounded-full bg-appleBorder hover:bg-appleGray transition-all"></button>
+                        <button onclick="setSlide(3)" class="dot-btn w-2 h-1.5 rounded-full bg-appleBorder hover:bg-appleGray transition-all"></button>
+                    </div>
+
+                    <button onclick="nextSlide()" class="p-3 rounded-full bg-appleCard border border-appleBorder hover:bg-appleBorder text-appleGray hover:text-white transition-all active:scale-95">
+                        <i class="fa-solid fa-chevron-right text-sm"></i>
+                    </button>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-28 relative bg-black border-t border-appleBorder">
+        <div class="max-w-5xl mx-auto px-6" data-aos="fade-up" data-aos-delay="100">
+            <div class="space-y-16">
+                
+                <!-- Section Header -->
+                <div class="space-y-4 max-w-3xl">
+                    <h2 class="text-xs uppercase tracking-widest font-semibold text-accentBlue">A workspace that stays with you</h2>
+                    <p class="text-3xl sm:text-6xl font-bold tracking-tight text-white leading-tight">
+                        Your files, <br>
+                        <span class="text-appleGray">in a clearer place.</span>
+                    </p>
+                </div>
+
+                <!-- Narrative Grid -->
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-12 text-appleGray leading-relaxed text-base sm:text-lg">
+                    <div>
+                        <p>
+                            TriCo is a browser-based workspace for focused HTML, CSS, and JavaScript work. Open a folder, browse its supported files, edit with CodeMirror, and see the result in a live preview beside your code.
+                        </p>
+                    </div>
+                    <div>
+                        <p>
+                            <strong class="text-white font-semibold">TriCo</strong> keeps the important workflow close: file creation, rename and delete actions, tabs, themes, word wrap, keyboard shortcuts, and direct saving when the browser grants folder access.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- High-Impact Metric Cards -->
+                <div class="grid grid-cols-1 sm:grid-cols-3 gap-6 pt-6" data-aos="fade-up" data-aos-delay="200">
+                    <div class="p-8 rounded-2xl bg-appleCard border border-appleBorder space-y-2">
+                        <div class="text-4xl sm:text-5xl font-extrabold text-white font-sans">3</div>
+                        <div class="text-xs text-appleGray">Core web languages in one workspace</div>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-appleCard border border-appleBorder space-y-2">
+                        <div class="text-4xl sm:text-5xl font-extrabold text-accentBlue font-sans">Live</div>
+                        <div class="text-xs text-appleGray">Preview beside your editor</div>
+                    </div>
+                    <div class="p-8 rounded-2xl bg-appleCard border border-appleBorder space-y-2">
+                        <div class="text-4xl sm:text-5xl font-extrabold text-purple-400 font-sans">Safe</div>
+                        <div class="text-xs text-appleGray">Workspace persistence in your browser</div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="py-28 relative bg-black border-t border-appleBorder">
+        <div class="max-w-6xl mx-auto px-6" data-aos="fade-up" data-aos-delay="100">
+            
+            <div class="max-w-2xl mb-16 space-y-3">
+                <h2 class="text-xs uppercase tracking-widest font-semibold text-accentBlue">Capabilities</h2>
+                <p class="text-3xl sm:text-5xl font-bold text-white tracking-tight">The essentials for shipping a small web project.</p>
+            </div>
+
+            <!-- Bento Features Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- Feature 1: Large Span -->
+                <div class="md:col-span-2 p-8 sm:p-10 rounded-2xl bg-appleCard border border-appleBorder space-y-6 flex flex-col justify-between hover:border-white/20 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-accentBlue/10 text-accentBlue flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-folder-tree"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">A real project explorer</h3>
+                        <p class="text-appleGray text-sm leading-relaxed max-w-xl">
+                            Open a project folder, browse nested files, create new files, rename them, delete them, and close the folder when you are done. Tabs stay separate from the workspace so closing a tab never deletes a file.
+                        </p>
+                    </div>
+                    <div class="pt-4 text-xs font-semibold text-accentBlue flex items-center gap-1">
+                        <span>Open your workspace</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Feature 2 -->
+                <div class="p-8 rounded-2xl bg-appleCard border border-appleBorder space-y-6 flex flex-col justify-between hover:border-white/20 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-purple-500/10 text-purple-400 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-code"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">CodeMirror at the center</h3>
+                        <p class="text-appleGray text-sm leading-relaxed">
+                            Edit with syntax highlighting, line numbers, bracket matching, quick symbols, word wrap, and editor themes including Dracula, Monokai, One Dark, and Light.
+                        </p>
+                    </div>
+                    <div class="pt-4 text-xs font-semibold text-purple-400 flex items-center gap-1">
+                        <span>Choose your editor feel</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Feature 3 -->
+                <div class="p-8 rounded-2xl bg-appleCard border border-appleBorder space-y-6 flex flex-col justify-between hover:border-white/20 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-emerald-500/10 text-emerald-400 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-eye"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Live preview, next to your code</h3>
+                        <p class="text-appleGray text-sm leading-relaxed">
+                            Run your HTML, CSS, and JavaScript together in an embedded preview. Open the result in a new tab on desktop when you want a larger view.
+                        </p>
+                    </div>
+                    <div class="pt-4 text-xs font-semibold text-emerald-400 flex items-center gap-1">
+                        <span>See changes in context</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </div>
+
+                <!-- Feature 4: Large Span -->
+                <div class="md:col-span-2 p-8 sm:p-10 rounded-2xl bg-appleCard border border-appleBorder space-y-6 flex flex-col justify-between hover:border-white/20 transition-all" data-aos="fade-up" data-aos-delay="200">
+                    <div class="space-y-3">
+                        <div class="w-10 h-10 rounded-xl bg-amber-500/10 text-amber-400 flex items-center justify-center text-lg">
+                            <i class="fa-solid fa-sliders"></i>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white">Preferences that persist</h3>
+                        <p class="text-appleGray text-sm leading-relaxed max-w-xl">
+                            Keep your app theme, editor theme, font family, font size, word wrap, and auto-run preference across reloads. Use shortcuts for the actions you repeat most.
+                        </p>
+                    </div>
+                    <div class="pt-4 text-xs font-semibold text-amber-400 flex items-center gap-1">
+                        <span>Make it yours</span> <i class="fa-solid fa-chevron-right text-[10px]"></i>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Banner Section -->
+    <section class="py-28 relative bg-black border-t border-appleBorder text-center">
+        <div class="max-w-4xl mx-auto px-6 space-y-8" data-aos="fade-up" data-aos-delay="100">
+            <h2 class="text-4xl sm:text-6xl font-extrabold text-white tracking-tight leading-tight">
+                Bring your workspace <br>
+                <span class="text-gradient">closer to the work.</span>
+            </h2>
+            <p class="text-appleGray text-base sm:text-xl max-w-xl mx-auto">
+                Open TriCo in your browser and start with the files you already have.
+            </p>
+
+            <div class="pt-4 flex items-center justify-center">
+                <a href="https://girish18-trico.netlify.app/" target="_blank" rel="noopener noreferrer" class="px-10 py-4 rounded-full bg-white hover:bg-appleLightGray text-black font-bold text-sm transition-all transform active:scale-95 shadow-xl flex items-center gap-2">
+                    <span>Launch TriCo Editor</span>
+                    <i class="fa-solid fa-arrow-right text-xs"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-black border-t border-appleBorder py-12 text-appleGray text-xs">
+        <div class="max-w-6xl mx-auto px-6 space-y-8">
+            
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-6 pb-8 border-b border-appleBorder">
+                <a href="#" class="text-lg font-bold text-white font-sans">TriCo<span class="text-accentBlue">.</span></a>
+                
+                <div class="flex items-center gap-8">
+                    <a href="#about" class="hover:text-white transition-colors">About</a>
+                    <a href="#features" class="hover:text-white transition-colors">Features</a>
+                    <a href="#screenshots" class="hover:text-white transition-colors">Screenshots</a>
+                    <a href="https://girish18-trico.netlify.app/" target="_blank" rel="noopener noreferrer" class="text-accentBlue hover:underline font-semibold">Launch Editor</a>
+                </div>
+            </div>
+
+            <div class="flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px]">
+                <p>&copy; 2026 TriCo Technologies Inc. All rights reserved.</p>
+                <div class="flex items-center gap-6">
+                    <span>HTML, CSS, and JavaScript workspace</span>
+                    <span>Browser-based project editing</span>
+                    <span>Built for focused work</span>
+                </div>
+            </div>
+
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+    <script>
+        // Initialize AOS (Animate On Scroll)
+        AOS.init({
+            duration: 800, // Animation duration in milliseconds
+            once: true,    // Whether animation should happen only once
+        });
+    </script>
+</body>
+</html>
